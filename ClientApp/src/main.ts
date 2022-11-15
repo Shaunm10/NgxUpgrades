@@ -8,13 +8,15 @@ export function getBaseUrl() {
   return document.getElementsByTagName('base')[0].href;
 }
 
-const providers = [
-  { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }
-];
+const providers = [{ provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }];
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic(providers).bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+platformBrowserDynamic(providers)
+  .bootstrapModule(AppModule)
+  .catch((err) => console.log(err));
+
+// removed in the 8 -> 9 upgrade.
+//export { renderModule, renderModuleFactory } from '@angular/platform-server';
